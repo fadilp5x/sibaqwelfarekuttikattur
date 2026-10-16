@@ -9,12 +9,13 @@ export interface SectionMetadata {
 
 export const PRESENTATION_SECTIONS: SectionMetadata[] = [
   { id: 'opening', number: '01', title: 'Introducing SIBAQ', shortLabel: 'Intro' },
-  { id: 'scale', number: '02', title: 'The Scale of SIBAQ', shortLabel: 'Reach' },
+  { id: 'scale', number: '02', title: 'The Scale of SIBAQ', shortLabel: 'Our Reach' },
   { id: 'culture', number: '03', title: 'Cultural Programmes', shortLabel: 'Programmes' },
   { id: 'venue', number: '04', title: 'Venue & Dates', shortLabel: 'Venue' },
   { id: 'stages', number: '05', title: 'Stage Arrangements', shortLabel: 'Stages' },
   { id: 'food', number: '06', title: 'Food Arrangements', shortLabel: 'Food' },
   { id: 'accommodation', number: '07', title: 'Accommodation & Facilities', shortLabel: 'Facilities' },
+  { id: 'total', number: '08', title: 'Total Estimated Support', shortLabel: 'Total' },
 ];
 
 export const PRESENTATION_DATA = {
@@ -275,6 +276,38 @@ export const PRESENTATION_DATA = {
       { name: 'Stage Arrangements', amount: '₹5,00,000', color: '#F15A24' },
       { name: 'Food Arrangements', amount: '₹4,00,000', color: '#FFC928' },
       { name: 'Accommodation & Facilities', amount: '₹1,00,000', color: '#33AC5A' },
+    ],
+  },
+  // Slide 08: Grand Total & Dua Closing
+  totalSupport: {
+    tagline: 'TOGETHER FOR KNOWLEDGE, ARTS AND A BRIGHTER GENERATION',
+    title: 'TOTAL ESTIMATED SUPPORT',
+    grandTotal: '₹10,00,000',
+    grandTotalWords: '10 LAKHS INR',
+    duaArabic: 'اللَّهُمَّ تَقَبَّلْ مِنَّا صَدَقَاتِنَا، وَاجْعَلْهَا خَالِصَةً لِوَجْهِكَ الْكَرِيمِ',
+    duaMeaning: 'O Allah, accept our charities and make them sincerely for Your sake.',
+    cards: [
+      {
+        number: '01',
+        title: 'STAGE ARRANGEMENTS',
+        amount: '₹5,00,000',
+        image: '/images/presentation/need-stages.png',
+        accentColor: '#F15A24',
+      },
+      {
+        number: '02',
+        title: 'FOOD ARRANGEMENTS',
+        amount: '₹4,00,000',
+        image: '/images/presentation/need-food.jpg',
+        accentColor: '#D97706',
+      },
+      {
+        number: '03',
+        title: 'ACCOMMODATION & ESSENTIAL FACILITIES',
+        amount: '₹1,00,000',
+        image: '/images/presentation/need-accommodation.png',
+        accentColor: '#218C4A',
+      },
     ],
   },
   // Slide 5 legacy support (kept for backward compatibility)

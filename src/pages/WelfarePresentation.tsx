@@ -9,6 +9,7 @@ import SectionVenue from '../components/welfare/SectionVenue';
 import SectionStageArrangements from '../components/welfare/SectionStageArrangements';
 import SectionFoodArrangements from '../components/welfare/SectionFoodArrangements';
 import SectionAccommodation from '../components/welfare/SectionAccommodation';
+import SectionTotalSupport from '../components/welfare/SectionTotalSupport';
 import ColorWipeOverlay, { WipeDirection } from '../components/welfare/ColorWipeOverlay';
 
 const SECTION_COLORS: Record<string, string> = {
@@ -19,6 +20,7 @@ const SECTION_COLORS: Record<string, string> = {
   stages: '#F15A24',  // SIBAQ Orange
   food: '#2F5FE8',    // Bright Blue
   accommodation: '#218C4A', // Emerald Green
+  total: '#6A0C14',   // Deep SIBAQ Crimson
   needs: '#F15A24',   // Fallback
 };
 
@@ -304,6 +306,7 @@ export default function WelfarePresentation() {
         <SectionStageArrangements />
         <SectionFoodArrangements />
         <SectionAccommodation />
+        <SectionTotalSupport />
       </main>
 
       {/* Floating Compact Presentation Control Bar */}

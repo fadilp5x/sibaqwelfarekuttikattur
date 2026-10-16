@@ -23,6 +23,7 @@ export default {
         head: ['Poppins', 'Archivo', 'sans-serif'],
         body: ['Inter', '"Plus Jakarta Sans"', 'sans-serif'],
         malayalam: ['"Noto Sans Malayalam"', 'sans-serif'],
+        arabic: ['"Noto Naskh Arabic"', 'Amiri', 'serif'],
       },
       keyframes: {
         marquee: {

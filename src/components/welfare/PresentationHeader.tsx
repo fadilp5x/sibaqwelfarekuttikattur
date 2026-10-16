@@ -69,7 +69,7 @@ export default function PresentationHeader({
                 title={`Jump to Section ${section.number}: ${section.title}`}
               >
                 <span>{section.number}</span>
-                <span className="hidden xl:inline ml-1 text-[10px] font-bold opacity-90">
+                <span className="hidden lg:inline ml-1 text-[10px] font-bold opacity-90">
                   {section.shortLabel}
                 </span>
               </button>
@@ -79,23 +79,10 @@ export default function PresentationHeader({
 
         {/* Right Label & Mode Controls */}
         <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
-          {/* Compact Combined Budget Requirement Context */}
-          <div
-            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFF2EB] border border-[#F15A24]/40 shadow-xs"
-            title="Estimated Combined Welfare Requirement across Stages, Food, and Accommodation"
-          >
-            <span className="font-head text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#D84315]">
-              COMBINED EST:
-            </span>
-            <span className="font-display text-xs sm:text-sm font-black text-[#F15A24]">
-              ₹10,00,000
-            </span>
-          </div>
-
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E7D6C2] shadow-sm">
+          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E7D6C2] shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#33AC5A] animate-pulse" />
-            <span className="font-head text-[9px] sm:text-[10px] tracking-[0.16em] font-extrabold text-[#191919]/80 uppercase">
-              WELFARE COMMITTEE
+            <span className="font-head text-[9px] sm:text-[10px] tracking-[0.16em] font-extrabold text-[#191919]/85 uppercase">
+              WELFARE COMMITTEE BRIEFING
             </span>
           </div>
 

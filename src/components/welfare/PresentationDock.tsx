@@ -96,11 +96,11 @@ export default function PresentationDock({
       {/* 1. Step Indicator & Short Section Label */}
       <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         <span className="font-head text-xs sm:text-sm font-black text-[#F15A24] tracking-wider">
-          {currentSection.number} / 0{totalSections}
+          {currentSection.number} / {String(totalSections).padStart(2, '0')}
         </span>
         <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-neutral-300" />
-        <span className="hidden sm:inline-block font-head text-[11px] font-extrabold text-[#191919]/70 uppercase truncate max-w-[110px]">
-          {currentSection.shortLabel}
+        <span className="hidden sm:inline-block font-head text-[11px] font-extrabold text-[#191919]/70 uppercase truncate max-w-[120px]">
+          {currentSection.id === 'total' ? 'Total Support' : currentSection.shortLabel}
         </span>
       </div>
 
@@ -138,9 +138,13 @@ export default function PresentationDock({
         <button
           onClick={onNext}
           disabled={isLast}
-          className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F15A24] text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#E52B2B] active:scale-95 transition-all shadow-sm shadow-[#F15A24]/30 touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
-          title="Next Slide (Space / → / ↓)"
-          aria-label="Next Slide"
+          className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] ${
+            isLast
+              ? 'bg-neutral-200 text-neutral-400 opacity-40 cursor-not-allowed shadow-none'
+              : 'bg-[#F15A24] text-white hover:bg-[#E52B2B] active:scale-95 shadow-sm shadow-[#F15A24]/30'
+          }`}
+          title={isLast ? 'Final Slide Reached' : 'Next Slide (Space / → / ↓)'}
+          aria-label={isLast ? 'Final Slide Reached' : 'Next Slide'}
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -148,7 +152,11 @@ export default function PresentationDock({
         </button>
 
         {/* Spacebar Hint (Desktop only) */}
-        <span className="hidden md:inline-block font-head text-[9px] font-extrabold tracking-wider text-[#191919]/50 uppercase px-1.5 py-0.5 rounded bg-black/5 select-none">
+        <span
+          className={`hidden md:inline-block font-head text-[9px] font-extrabold tracking-wider uppercase px-1.5 py-0.5 rounded select-none ${
+            isLast ? 'text-[#191919]/25 bg-black/[0.03]' : 'text-[#191919]/50 bg-black/5'
+          }`}
+        >
           SPACE / →
         </span>
 
