@@ -7,6 +7,7 @@ import SectionScale from '../components/welfare/SectionScale';
 import SectionCulture from '../components/welfare/SectionCulture';
 import SectionVenue from '../components/welfare/SectionVenue';
 import SectionStageArrangements from '../components/welfare/SectionStageArrangements';
+import SectionFoodArrangements from '../components/welfare/SectionFoodArrangements';
 import SectionNeeds from '../components/welfare/SectionNeeds';
 import ColorWipeOverlay, { WipeDirection } from '../components/welfare/ColorWipeOverlay';
 
@@ -301,6 +302,7 @@ export default function WelfarePresentation() {
         <SectionCulture />
         <SectionVenue />
         <SectionStageArrangements />
+        <SectionFoodArrangements />
       </main>
 
       {/* Floating Compact Presentation Control Bar */}
