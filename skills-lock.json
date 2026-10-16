@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "skills": {
+    "antislop": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop/SKILL.md",
+      "computedHash": "635a11be08c1a6b6a637975c1b6da2645747f18bb55a763954310ec90f75e0f8"
+    },
+    "antislop-authenticity": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-authenticity/SKILL.md",
+      "computedHash": "e7daa2ae5d3247abdf1ed8201e4d9c46d388b85cfa5787ba8ea3cab9eabb6867"
+    },
+    "antislop-designsystem": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-designsystem/SKILL.md",
+      "computedHash": "d7233876503d5c103590f872d4b331f27d1864a1e0c3b45e2b67fad53bed361d"
+    },
+    "antislop-imagery": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-imagery/SKILL.md",
+      "computedHash": "805452bc47f334fb20c140dabe74bb91f8fc9bd75c1ff0ff73985ad2c8dcde0d"
+    },
+    "antislop-layout": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-layout/SKILL.md",
+      "computedHash": "f1c413210170e69e585748f407cd1a4fac582fd61670f7abd0bf4e3bf5819847"
+    },
+    "antislop-layoutmobile": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-layoutmobile/SKILL.md",
+      "computedHash": "4d32f03f5398fcb641e5d795ba0fd8d6eaeb2363a3a48f2824934042d6d51e38"
+    },
+    "antislop-master": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-master/SKILL.md",
+      "computedHash": "4dd7dcf603ff002e397a363e15e40390f02354a1b6e7864ba7587055d5b2011d"
+    },
+    "antislop-motion": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-motion/SKILL.md",
+      "computedHash": "4d4464ddbc78133a64a66245932e09020019c9e7f90241df6690ae0450eb2fa2"
+    },
+    "antislop-nav": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-nav/SKILL.md",
+      "computedHash": "a888d1fb4fa266dbf364c7194b99cb90fa51dad0e38aa383b503ddbf1ef6a0ff"
+    },
+    "antislop-ui": {
+      "source": "muris11/anti-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop-ui/SKILL.md",
+      "computedHash": "8e98d3c2e3666d4940dc8f815d6c3fdafa986b8394349cfe2a05f3745b5f7ec5"
+    },
+    "brand-guidelines": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/brand-guidelines/SKILL.md",
+      "computedHash": "c82f0b24cdcc7e2693a963d30c810558b7bb89ed84508b2328228d21256ef865"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "41463de84d80d8839b1e9fc8ddfd140578443d095b53710d1f331dbab3079712"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "106acf230014cbb43ca34e6410371321b56ca742f9ee0442e8ec05bf02eb0384"
+    },
+    "image-to-code": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/image-to-code-skill/SKILL.md",
+      "computedHash": "3d2ac14d956fdafc5500d2108b90895e134d847f9f199e7f1d18bf1f814cf7c8"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "e5ad7ca5507bd2b8dbb5bbf57643638a13d1ffa68566089c513fe4136d8b7d10"
+    },
+    "transitions-dev": {
+      "source": "Jakubantalik/transitions.dev",
+      "sourceType": "github",
+      "skillPath": "skills/transitions-dev/SKILL.md",
+      "computedHash": "b8f0f695498eec44440f3c00a5a0cf8dcc9e1b4d5b519665bf789cff683aa7c5"
+    },
+    "transitions-polish": {
+      "source": "Jakubantalik/transitions.dev",
+      "sourceType": "github",
+      "skillPath": "skills/transitions-polish/SKILL.md",
+      "computedHash": "e456d8cc8ef3b18ae9d1f5be41ea92b0b14abeb8cf8cf7eff2da09966b15a785"
+    },
+    "web-artifacts-builder": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-artifacts-builder/SKILL.md",
+      "computedHash": "fdddbe9bb720ea1aea9292ee513ec10b2a8f4912e2c343bdc246ab3febd7c9b3"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "d8e7d3afe37dcc8a97b99ffb5afdb4d0919ae0092ea8b68f44eb201f035e33ac"
+    }
+  }
+}

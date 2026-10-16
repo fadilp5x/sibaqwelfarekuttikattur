@@ -13,6 +13,7 @@ export const NAV_LINKS = [
   { to: '/donation', label: 'Donation QR' },
   { to: '/promote', label: 'Want to Promote?' },
   { to: '/sponsors', label: 'Become a Sponsor' },
+  { to: '/welfare-presentation', label: 'Welfare Presentation' },
 ];
 
 export default function SiteHeader() {

@@ -32,6 +32,7 @@ export default function SiteFooter() {
               ['/donation', 'Donation'],
               ['/promote', 'Promote'],
               ['/sponsors', 'Sponsors'],
+              ['/welfare-presentation', 'Welfare Presentation'],
             ].map(([to, label]) => (
               <Link key={to} to={to} className="text-ink/60 transition-colors hover:text-marigold">
                 {label}

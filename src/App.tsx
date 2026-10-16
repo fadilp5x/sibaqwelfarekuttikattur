@@ -19,10 +19,12 @@ import PromotePage from './pages/PromotePage';
 import SponsorsPage from './pages/SponsorsPage';
 import NotFound from './pages/NotFound';
 import AdminApp from './admin/AdminApp';
+import WelfarePresentation from './pages/WelfarePresentation';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
+    if (pathname === '/welfare-presentation') return;
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, [pathname]);
   return null;
@@ -31,18 +33,21 @@ function ScrollToTop() {
 function MainLayout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith('/admin');
+  const isPresentation = pathname === '/welfare-presentation';
+  const hideChrome = isAdmin || isPresentation;
   return (
     <>
-      {!isAdmin && <SiteHeader />}
+      {!hideChrome && <SiteHeader />}
       <main>{children}</main>
-      {!isAdmin && <SiteFooter />}
-      {!isAdmin && <FloatingPlay />}
+      {!hideChrome && <SiteFooter />}
+      {!hideChrome && <FloatingPlay />}
     </>
   );
 }
 
 export default function App() {
-  const [preloaderDone, setPreloaderDone] = useState(false);
+  const isPresentationRoute = typeof window !== 'undefined' && window.location.pathname === '/welfare-presentation';
+  const [preloaderDone, setPreloaderDone] = useState(isPresentationRoute);
 
   return (
     <ErrorBoundary>
@@ -50,7 +55,7 @@ export default function App() {
         <SiteProvider>
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <ScrollToTop />
-          <Preloader onDone={() => setPreloaderDone(true)} />
+          {!isPresentationRoute && <Preloader onDone={() => setPreloaderDone(true)} />}
           <div 
             className={preloaderDone ? '' : 'h-[100svh] overflow-hidden opacity-0 pointer-events-none select-none'} 
             {...(!preloaderDone ? { inert: '' } : {})}
@@ -67,6 +72,7 @@ export default function App() {
                 <Route path="/donation" element={<DonationPage />} />
                 <Route path="/promote" element={<PromotePage />} />
                 <Route path="/sponsors" element={<SponsorsPage />} />
+                <Route path="/welfare-presentation" element={<WelfarePresentation />} />
                 <Route path="/admin/*" element={<AdminApp />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
