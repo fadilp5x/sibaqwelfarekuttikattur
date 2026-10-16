@@ -9,10 +9,12 @@ export interface SectionMetadata {
 
 export const PRESENTATION_SECTIONS: SectionMetadata[] = [
   { id: 'opening', number: '01', title: 'Introducing SIBAQ', shortLabel: 'Intro' },
-  { id: 'scale', number: '02', title: 'The Scale of SIBAQ', shortLabel: 'Our Reach' },
+  { id: 'scale', number: '02', title: 'The Scale of SIBAQ', shortLabel: 'Reach' },
   { id: 'culture', number: '03', title: 'Cultural Programmes', shortLabel: 'Programmes' },
   { id: 'venue', number: '04', title: 'Venue & Dates', shortLabel: 'Venue' },
-  { id: 'needs', number: '05', title: 'Key Areas of Support', shortLabel: 'Support' },
+  { id: 'stages', number: '05', title: 'Stage Arrangements', shortLabel: 'Stages' },
+  { id: 'food', number: '06', title: 'Food Arrangements', shortLabel: 'Food' },
+  { id: 'accommodation', number: '07', title: 'Accommodation & Facilities', shortLabel: 'Facilities' },
 ];
 
 export const PRESENTATION_DATA = {
@@ -134,7 +136,148 @@ export const PRESENTATION_DATA = {
     mapQuery: 'Shamsul Huda Islamic Academy, Kuttikkattur, Kozhikode, Kerala',
     coordinates: '11.2721° N, 75.8756° E',
   },
-  // Slide 5: Welfare Committee Appeal (Final Slide)
+  // Slide 05: Stage Arrangements
+  stageArrangements: {
+    kicker: 'FACILITIES REQUIRED FOR SIBAQ 2K26',
+    title: 'STAGE ARRANGEMENTS',
+    subtitle: 'Essential staging infrastructure to host 400+ national arts competitions across 3 festival days.',
+    image: '/images/presentation/need-stages.png',
+    remoteUrl: 'https://i.postimg.cc/VkgJM8Xc/image.png',
+    accentColor: '#F15A24', // SIBAQ Flame Orange
+    estimatedAmount: '₹5,00,000',
+    facilities: [
+      { id: '1', number: '01', title: 'THREE STAGES', description: 'Three parallel performance stages with professional lighting, acoustics and live event rigs.' },
+      { id: '2', number: '02', title: 'PANTHAL', description: 'Large weatherproof covered pavilion for audience comfort, judges and dignitaries.' },
+      { id: '3', number: '03', title: 'GREEN ROOMS', description: 'Dedicated preparation and makeup suites for 4,000+ participating student artists.' },
+      { id: '4', number: '04', title: 'KITCHEN', description: 'High-capacity community kitchen facility equipped for mass meal preparation.' },
+      { id: '5', number: '05', title: 'DINING HALL', description: 'Spacious, clean dining hall ensuring hygienic and orderly meal distribution.' },
+      { id: '6', number: '06', title: 'GUEST ROOM', description: 'Hospitality suites for visiting scholars, university dignitaries, jury members and guests.' },
+    ],
+  },
+  // Slide 06: Food Arrangements with verified Malayalam poster transcription
+  foodArrangements: {
+    kicker: 'FOOD ITEMS AND ESTIMATED COSTS',
+    title: 'FOOD ARRANGEMENTS',
+    subtitle: 'Nourishing 4,000+ student candidates and organisers across 20, 21 & 22 November 2026.',
+    posterImage: '/images/presentation/food-poster-new.png',
+    posterRemoteUrl: 'https://i.postimg.cc/Hkdz6gnV/image.png',
+    accentColor: '#FFC928', // Marigold Yellow
+    secondaryColor: '#F15A24',
+    estimatedAmount: '₹4,00,000', // Independent overall food budget
+    itemsTotalCalculated: '₹3,74,000',
+    items: [
+      {
+        id: '1',
+        number: '01',
+        malayalam: 'നെയ്ച്ചോറ് & ചിക്കൻ കറി',
+        english: 'Neychoru & Chicken Curry',
+        price: '₹77,000',
+        accent: '#F15A24',
+      },
+      {
+        id: '2',
+        number: '02',
+        malayalam: 'പൊറോട്ട & ചിക്കൻ കറി',
+        english: 'Porotta & Chicken Curry',
+        price: '₹35,000',
+        accent: '#E52B2B',
+      },
+      {
+        id: '3',
+        number: '03',
+        malayalam: 'ചിക്കൻ ബിരിയാണി',
+        english: 'Chicken Biriyani',
+        price: '₹88,000',
+        accent: '#F15A24',
+      },
+      {
+        id: '4',
+        number: '04',
+        malayalam: 'ചായ & സ്നാക്സ്',
+        english: 'Tea & Snacks',
+        price: '₹16,000',
+        accent: '#FFC928',
+      },
+      {
+        id: '5',
+        number: '05',
+        malayalam: 'ചിക്കൻ സൂർബിയാൻ',
+        english: 'Chicken Surbiyan',
+        price: '₹88,000',
+        accent: '#F15A24',
+      },
+      {
+        id: '6',
+        number: '06',
+        malayalam: 'സദ്യ',
+        english: 'Sadya (Traditional Feast)',
+        price: '₹40,000',
+        accent: '#33AC5A',
+      },
+      {
+        id: '7',
+        number: '07',
+        malayalam: 'പൊറോട്ട & ഗ്രീൻ പീസ്',
+        english: 'Porotta & Green Peas',
+        price: '₹30,000',
+        accent: '#33AC5A',
+      },
+    ],
+  },
+  // Slide 07: Accommodation & Essential Facilities
+  accommodationFacilities: {
+    kicker: 'COMFORT, SAFETY AND ESSENTIAL SUPPORT',
+    title: 'ACCOMMODATION & ESSENTIAL FACILITIES',
+    subtitle: 'Ensuring health, hygiene, and safe overnight accommodations for candidate contingents.',
+    image: '/images/presentation/need-accommodation.png',
+    remoteUrl: 'https://i.postimg.cc/13Gpj263/image.png',
+    accentColor: '#33AC5A', // Emerald Green
+    estimatedAmount: '₹1,00,000',
+    facilities: [
+      {
+        id: '1',
+        number: '01',
+        title: 'ACCOMMODATION FACILITIES',
+        description: 'Safe, organized campus lodgings accommodating student delegations from 10+ university campuses.',
+      },
+      {
+        id: '2',
+        number: '02',
+        title: 'COMFORT STATIONS / WASHROOM FACILITIES',
+        description: 'Dedicated hygiene-compliant sanitation blocks, regular upkeep, and abundant clean water points.',
+      },
+      {
+        id: '3',
+        number: '03',
+        title: 'BEDROOMS & SLEEPING ARRANGEMENTS',
+        description: 'Quiet, well-ventilated resting quarters with bedding and clean floor mats for over 4,000 youth competitors.',
+      },
+      {
+        id: '4',
+        number: '04',
+        title: 'MEDICAL SUPPORT POINT',
+        description: 'First-aid post with certified volunteers, emergency medical supplies, and on-call physician contact.',
+      },
+      {
+        id: '5',
+        number: '05',
+        title: 'ROAD AND PERIMETER SECURITY',
+        description: 'Campus perimeter management, safe pedestrian road crossing, night lighting, and parking oversight.',
+      },
+    ],
+  },
+  // Overall Briefing Budget Context
+  overallBudget: {
+    combinedTotal: '₹10,00,000',
+    label: 'ESTIMATED COMBINED REQUIREMENT',
+    note: 'Estimated requirement across all three core welfare sectors',
+    breakdown: [
+      { name: 'Stage Arrangements', amount: '₹5,00,000', color: '#F15A24' },
+      { name: 'Food Arrangements', amount: '₹4,00,000', color: '#FFC928' },
+      { name: 'Accommodation & Facilities', amount: '₹1,00,000', color: '#33AC5A' },
+    ],
+  },
+  // Slide 5 legacy support (kept for backward compatibility)
   needs: {
     kicker: 'WELFARE COMMITTEE APPEAL',
     headline: 'HELP US MAKE SIBAQ POSSIBLE',
