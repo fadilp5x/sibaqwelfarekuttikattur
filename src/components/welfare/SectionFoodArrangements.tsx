@@ -32,15 +32,15 @@ export default function SectionFoodArrangements() {
           </div>
         </div>
 
-        {/* Bottom Row: Official Poster on Left, 7 Items in White Cards on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
-          {/* LEFT SIDE: Original Malayalam Fundraising Poster displayed large edge-to-edge */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="relative w-full h-[200px] sm:h-[240px] lg:h-[260px] xl:h-[300px] rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-white/30 bg-white shadow-2xl flex items-center justify-center p-1 sm:p-2 group">
+        {/* Bottom Row: Official Poster on Left (no white borders, left-aligned), 7 Items in White Cards on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+          {/* LEFT SIDE: Original Malayalam Fundraising Poster displayed full without edge white border */}
+          <div className="lg:col-span-4 flex flex-col items-start justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/40 group">
               <img
                 src={foodArrangements.posterImage}
                 alt="SIBAQ 2K26 Food Sponsorship Official Malayalam Poster"
-                className="w-full h-full object-contain object-center rounded-xl transition-transform duration-500 group-hover:scale-[1.01]"
+                className="w-full h-auto max-h-[340px] sm:max-h-[380px] lg:max-h-[410px] object-contain rounded-2xl block group-hover:scale-[1.01] transition-transform duration-300"
                 loading="eager"
                 onError={(e) => {
                   if (foodArrangements.posterRemoteUrl && e.currentTarget.src !== foodArrangements.posterRemoteUrl) {
@@ -50,18 +50,18 @@ export default function SectionFoodArrangements() {
               />
               
               {/* Corner Verified Badge */}
-              <div className="absolute top-2.5 left-2.5 bg-[#191919]/80 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs border border-white/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFC928]" />
-                <span className="font-head text-[9px] font-extrabold uppercase tracking-wider">
+              <div className="absolute top-2.5 left-2.5 bg-[#191919]/85 backdrop-blur-md text-white px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-md border border-white/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFC928] animate-pulse" />
+                <span className="font-head text-[9px] font-black uppercase tracking-wider">
                   OFFICIAL SPONSORSHIP POSTER
                 </span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE: Seven Food Items in Crisp White Cards (2-column responsive grid) */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="flex items-center justify-between pb-1 px-1 border-b border-white/20 text-white/80 mb-1.5">
+          {/* RIGHT SIDE: Seven Food Items in Bigger, High-Legibility White Cards */}
+          <div className="lg:col-span-8 flex flex-col justify-between">
+            <div className="flex items-center justify-between pb-1 px-1 border-b border-white/20 text-white/80 mb-2">
               <span className="font-head text-[10px] sm:text-[11px] font-black uppercase tracking-wider">
                 VERIFIED MENU ITEMS (7 PACKAGES)
               </span>
@@ -70,38 +70,38 @@ export default function SectionFoodArrangements() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
               {foodArrangements.items.map((item) => (
                 <div
                   key={item.id}
-                  className="group flex items-center justify-between gap-2 py-1.5 sm:py-2 px-3 rounded-xl bg-white text-[#191919] border border-white/20 hover:shadow-lg transition-all duration-200"
+                  className="group flex items-center justify-between gap-2.5 p-2.5 sm:p-3 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white text-[#191919] border border-white/20 shadow-sm hover:shadow-xl transition-all duration-200"
                 >
-                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                  <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
                     {/* Number Badge */}
                     <span
-                      className="w-6 h-6 rounded-md flex items-center justify-center font-head text-[10px] sm:text-[11px] font-black text-white flex-shrink-0 shadow-xs"
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-head text-xs sm:text-sm font-black text-white flex-shrink-0 shadow-xs"
                       style={{ backgroundColor: item.accent }}
                     >
                       {item.number}
                     </span>
 
                     {/* Malayalam Name + English Subtitle */}
-                    <div className="min-w-0">
-                      <span className="font-malayalam font-bold text-xs sm:text-[13px] text-[#191919] block leading-snug truncate">
+                    <div className="flex-1 min-w-0">
+                      <span className="font-malayalam font-bold text-xs sm:text-sm lg:text-[15px] xl:text-base text-[#191919] block leading-tight">
                         {item.malayalam}
                       </span>
-                      <span className="font-body text-[10px] sm:text-[11px] text-[#191919]/65 block font-medium truncate">
+                      <span className="font-body text-[10px] sm:text-[11px] lg:text-xs text-[#191919]/65 block font-semibold mt-0.5 leading-tight">
                         {item.english}
                       </span>
                     </div>
                   </div>
 
                   {/* Exact Printed Amount Badge */}
-                  <div className="flex items-center gap-1.5 flex-shrink-0 pl-2">
-                    <span className="font-head text-[9px] font-extrabold text-[#191919]/40 uppercase tracking-widest hidden xl:inline">
+                  <div className="flex items-baseline gap-1 flex-shrink-0 pl-2">
+                    <span className="font-head text-[10px] font-extrabold text-[#191919]/40 uppercase tracking-wider hidden xl:inline">
                       INR
                     </span>
-                    <span className="font-display text-xs sm:text-sm font-black text-[#191919] group-hover:text-[#2F5FE8] transition-colors">
+                    <span className="font-display text-base sm:text-lg lg:text-xl font-black text-[#2F5FE8] group-hover:scale-105 transition-transform">
                       {item.price}
                     </span>
                   </div>
@@ -109,22 +109,22 @@ export default function SectionFoodArrangements() {
               ))}
 
               {/* 8th Balanced Summary Card */}
-              <div className="flex items-center justify-between gap-2 py-1.5 sm:py-2 px-3 rounded-xl bg-white/10 backdrop-blur-xs text-white border border-white/20">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-6 h-6 rounded-md bg-[#FFC928] text-[#191919] flex items-center justify-center font-head text-[11px] font-black flex-shrink-0 shadow-xs">
+              <div className="flex items-center justify-between gap-3 p-2.5 sm:p-3 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white/15 backdrop-blur-md text-white border border-white/30 shadow-sm">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#FFC928] text-[#191919] flex items-center justify-center font-head text-xs sm:text-sm font-black flex-shrink-0 shadow-xs">
                     ✓
                   </span>
                   <div className="min-w-0">
-                    <span className="font-head text-[10px] sm:text-[11px] font-black uppercase tracking-wider block text-white truncate">
+                    <span className="font-head text-[11px] sm:text-xs font-black uppercase tracking-wider block text-white truncate">
                       ALL 3 FESTIVAL DAYS
                     </span>
-                    <span className="font-body text-[9px] sm:text-[10px] text-white/70 block truncate">
+                    <span className="font-body text-[10px] sm:text-[11px] text-white/80 block font-semibold truncate mt-0.5">
                       20, 21 &amp; 22 Nov 2026
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-1 flex-shrink-0 pl-1">
-                  <span className="font-display text-xs sm:text-sm font-black text-[#FFC928]">
+                  <span className="font-display text-base sm:text-lg lg:text-xl font-black text-[#FFC928]">
                     ₹4,00,000
                   </span>
                 </div>

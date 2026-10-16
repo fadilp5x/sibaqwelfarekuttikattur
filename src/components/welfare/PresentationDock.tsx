@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { PRESENTATION_SECTIONS } from '../../lib/presentationData';
 
 interface PresentationDockProps {
@@ -22,11 +23,76 @@ export default function PresentationDock({
   const isFirst = activeSectionIndex === 0;
   const isLast = activeSectionIndex === totalSections - 1;
 
+  // Autohide state & timer
+  const [isVisible, setIsVisible] = useState(true);
+  const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isHoveredRef = useRef(false);
+
+  const resetHideTimer = () => {
+    setIsVisible(true);
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+    }
+    if (!isHoveredRef.current) {
+      hideTimerRef.current = setTimeout(() => {
+        setIsVisible(false);
+      }, 3000);
+    }
+  };
+
+  useEffect(() => {
+    resetHideTimer();
+
+    const handleActivity = () => {
+      resetHideTimer();
+    };
+
+    window.addEventListener('mousemove', handleActivity);
+    window.addEventListener('keydown', handleActivity);
+    window.addEventListener('touchstart', handleActivity);
+    window.addEventListener('scroll', handleActivity);
+
+    return () => {
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      window.removeEventListener('mousemove', handleActivity);
+      window.removeEventListener('keydown', handleActivity);
+      window.removeEventListener('touchstart', handleActivity);
+      window.removeEventListener('scroll', handleActivity);
+    };
+  }, [activeSectionIndex]);
+
   return (
-    <aside
-      aria-label="Presentation controls"
-      className="fixed bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] sm:w-auto sm:min-w-[480px] max-w-lg bg-white/95 backdrop-blur-md border border-[#E7D6C2] rounded-full px-3.5 sm:px-5 py-2 shadow-lg shadow-black/5 flex items-center justify-between gap-2.5 sm:gap-4 transition-all"
-    >
+    <>
+      {/* Bottom screen hover trigger zone */}
+      <div
+        className="fixed bottom-0 left-0 right-0 h-14 z-30 pointer-events-auto"
+        onMouseEnter={() => {
+          isHoveredRef.current = true;
+          setIsVisible(true);
+        }}
+        onMouseMove={() => {
+          setIsVisible(true);
+        }}
+        aria-hidden="true"
+      />
+
+      <aside
+        aria-label="Presentation controls"
+        onMouseEnter={() => {
+          isHoveredRef.current = true;
+          if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+          setIsVisible(true);
+        }}
+        onMouseLeave={() => {
+          isHoveredRef.current = false;
+          resetHideTimer();
+        }}
+        className={`fixed bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] sm:w-auto sm:min-w-[480px] max-w-lg bg-white/95 backdrop-blur-md border border-[#E7D6C2] rounded-full px-3.5 sm:px-5 py-2 shadow-lg shadow-black/5 flex items-center justify-between gap-2.5 sm:gap-4 transition-all duration-300 ease-out ${
+          isVisible
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 translate-y-16 pointer-events-none'
+        }`}
+      >
       {/* 1. Step Indicator & Short Section Label */}
       <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         <span className="font-head text-xs sm:text-sm font-black text-[#F15A24] tracking-wider">
@@ -105,5 +171,6 @@ export default function PresentationDock({
         </button>
       </div>
     </aside>
-  );
+  </>
+);
 }

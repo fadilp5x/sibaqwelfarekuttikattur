@@ -94,52 +94,49 @@ export default function SectionAccommodation() {
             </div>
           </div>
 
-          {/* RIGHT: Five Essential Facilities in Crisp White Cards (2-column responsive grid) */}
+          {/* RIGHT: Five Essential Facilities in Distinct Visual Cards with Icons & Headings */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
               {accommodationFacilities.facilities.map((fac) => (
                 <div
                   key={fac.id}
-                  className="group flex items-center gap-2.5 p-2 sm:p-2.5 px-3 rounded-xl bg-white text-[#191919] border border-white/20 hover:shadow-lg transition-all duration-200"
+                  className="group flex items-center gap-3 p-3 sm:p-3.5 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white text-[#191919] border border-white/20 shadow-sm hover:shadow-xl transition-all duration-200"
                 >
                   {/* Number Badge */}
-                  <div className="w-6 h-6 rounded-lg bg-[#218C4A] text-white flex items-center justify-center font-head text-[10px] sm:text-xs font-black flex-shrink-0 shadow-xs">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#218C4A] text-white flex items-center justify-center font-head text-xs sm:text-sm font-black flex-shrink-0 shadow-xs">
                     {fac.number}
                   </div>
 
-                  {/* Content */}
+                  {/* Bold Heading Text */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-head text-[11px] sm:text-xs font-black tracking-wider text-[#191919] uppercase leading-tight truncate">
+                    <h3 className="font-head text-xs sm:text-sm font-black tracking-wide text-[#191919] uppercase leading-tight">
                       {fac.title}
                     </h3>
-                    <p className="font-body text-[9px] sm:text-[10px] text-[#191919]/70 leading-snug mt-0.5 line-clamp-2">
-                      {fac.description}
-                    </p>
                   </div>
 
-                  {/* Right Icon */}
-                  <div className="flex-shrink-0 pl-1">
+                  {/* Prominent Facility Icon */}
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#218C4A]/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     {FACILITY_ICONS[fac.id]}
                   </div>
                 </div>
               ))}
 
               {/* 6th Balanced Summary Card */}
-              <div className="flex items-center justify-between gap-2.5 p-2 sm:p-2.5 px-3 rounded-xl bg-white/10 backdrop-blur-xs text-white border border-white/20">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-6 h-6 rounded-lg bg-[#FFC928] text-[#191919] flex items-center justify-center font-head text-[11px] font-black flex-shrink-0 shadow-xs">
+              <div className="flex items-center justify-between gap-3 p-3 sm:p-3.5 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white/15 backdrop-blur-md text-white border border-white/30 shadow-sm">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#FFC928] text-[#191919] flex items-center justify-center font-head text-xs sm:text-sm font-black flex-shrink-0 shadow-xs">
                     ✓
                   </span>
                   <div className="min-w-0">
-                    <span className="font-head text-[10px] sm:text-[11px] font-black uppercase tracking-wider block text-white truncate">
+                    <span className="font-head text-xs sm:text-sm font-black uppercase tracking-wider block text-white truncate">
                       CAMPUS CARE READY
                     </span>
-                    <p className="font-body text-[9px] sm:text-[10px] text-white/70 block truncate">
-                      Hostels &amp; Medical Points
-                    </p>
+                    <span className="font-body text-[10px] sm:text-[11px] text-white/80 block font-semibold truncate mt-0.5">
+                      10+ Campus Delegations
+                    </span>
                   </div>
                 </div>
-                <span className="font-display text-xs sm:text-sm font-black text-[#FFC928]">
+                <span className="font-display text-sm sm:text-base font-black text-[#FFC928]">
                   ₹1,00,000
                 </span>
               </div>
