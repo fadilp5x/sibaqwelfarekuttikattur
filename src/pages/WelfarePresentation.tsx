@@ -7,10 +7,27 @@ import SectionScale from '../components/welfare/SectionScale';
 import SectionCulture from '../components/welfare/SectionCulture';
 import SectionVenue from '../components/welfare/SectionVenue';
 import SectionNeeds from '../components/welfare/SectionNeeds';
+import ColorWipeOverlay, { WipeDirection } from '../components/welfare/ColorWipeOverlay';
+
+const SECTION_COLORS: Record<string, string> = {
+  opening: '#F15A24', // Flame Orange
+  scale: '#E52B2B',   // Festival Red
+  culture: '#FFC928', // Marigold Yellow
+  venue: '#33AC5A',   // Emerald Green
+  stages: '#F15A24',  // Flame Orange
+  food: '#FFC928',    // Marigold Yellow
+  accommodation: '#33AC5A', // Emerald Green
+  needs: '#F15A24',   // Fallback
+};
 
 export default function WelfarePresentation() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [wipeActive, setWipeActive] = useState(false);
+  const [wipeDirection, setWipeDirection] = useState<WipeDirection>('forward');
+  const [wipeColor, setWipeColor] = useState<string>('#F15A24');
+  const pendingTargetIndexRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const lastNavTimeRef = useRef<number>(0);
 
@@ -49,7 +66,7 @@ export default function WelfarePresentation() {
     };
   }, []);
 
-  // Track active section using IntersectionObserver
+  // Track active section using IntersectionObserver (only when not transitioning)
   useEffect(() => {
     const sectionElements = PRESENTATION_SECTIONS.map((s) =>
       document.getElementById(s.id)
@@ -59,6 +76,7 @@ export default function WelfarePresentation() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isTransitioning) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = PRESENTATION_SECTIONS.findIndex(
@@ -81,7 +99,7 @@ export default function WelfarePresentation() {
     return () => {
       sectionElements.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [isTransitioning]);
 
   // Fullscreen event listener
   useEffect(() => {
@@ -95,27 +113,54 @@ export default function WelfarePresentation() {
     };
   }, []);
 
-  // Scroll to section by index
-  const scrollToSection = useCallback((index: number) => {
-    if (index < 0 || index >= PRESENTATION_SECTIONS.length) return;
-    const section = PRESENTATION_SECTIONS[index];
-    const element = document.getElementById(section.id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // Trigger full-screen SIBAQ colour-wipe transition to target slide
+  const navigateToSlide = useCallback((targetIndex: number) => {
+    if (isTransitioning) return;
+    if (targetIndex < 0 || targetIndex >= PRESENTATION_SECTIONS.length) return;
+    if (targetIndex === activeSectionIndex) return;
+
+    const direction: WipeDirection = targetIndex > activeSectionIndex ? 'forward' : 'backward';
+    const targetSection = PRESENTATION_SECTIONS[targetIndex];
+    const targetColor = SECTION_COLORS[targetSection.id] || '#F15A24';
+
+    setIsTransitioning(true);
+    setWipeDirection(direction);
+    setWipeColor(targetColor);
+    pendingTargetIndexRef.current = targetIndex;
+    setWipeActive(true);
+  }, [isTransitioning, activeSectionIndex]);
+
+  // Called when the wipe panel has completely covered the screen (Phase C)
+  const handleWipeCovered = useCallback(() => {
+    const targetIdx = pendingTargetIndexRef.current;
+    if (targetIdx !== null && targetIdx >= 0 && targetIdx < PRESENTATION_SECTIONS.length) {
+      const section = PRESENTATION_SECTIONS[targetIdx];
+      const element = document.getElementById(section.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+      setActiveSectionIndex(targetIdx);
     }
+  }, []);
+
+  // Called when reveal animation completes (Phase D finished)
+  const handleWipeComplete = useCallback(() => {
+    setWipeActive(false);
+    pendingTargetIndexRef.current = null;
+    setIsTransitioning(false);
   }, []);
 
   const handlePrev = useCallback(() => {
     if (activeSectionIndex > 0) {
-      scrollToSection(activeSectionIndex - 1);
+      navigateToSlide(activeSectionIndex - 1);
     }
-  }, [activeSectionIndex, scrollToSection]);
+  }, [activeSectionIndex, navigateToSlide]);
 
   const handleNext = useCallback(() => {
     if (activeSectionIndex < PRESENTATION_SECTIONS.length - 1) {
-      scrollToSection(activeSectionIndex + 1);
+      navigateToSlide(activeSectionIndex + 1);
     }
-  }, [activeSectionIndex, scrollToSection]);
+  }, [activeSectionIndex, navigateToSlide]);
 
   const toggleFullscreen = useCallback(async () => {
     try {
@@ -201,12 +246,12 @@ export default function WelfarePresentation() {
 
         case 'Home':
           e.preventDefault();
-          scrollToSection(0);
+          navigateToSlide(0);
           break;
 
         case 'End':
           e.preventDefault();
-          scrollToSection(PRESENTATION_SECTIONS.length - 1);
+          navigateToSlide(PRESENTATION_SECTIONS.length - 1);
           break;
 
         case 'f':
@@ -224,22 +269,31 @@ export default function WelfarePresentation() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleNext, handlePrev, scrollToSection, toggleFullscreen]);
+  }, [handleNext, handlePrev, navigateToSlide, toggleFullscreen]);
 
   return (
     <div
       ref={containerRef}
       className="relative bg-[#FFF8E8] text-[#191919] min-h-screen selection:bg-[#F15A24] selection:text-white"
     >
-      {/* Fixed Header with 01-05 indicators */}
+      {/* Full-Screen Brand Colour-Wipe Transition Layer */}
+      <ColorWipeOverlay
+        isActive={wipeActive}
+        color={wipeColor}
+        direction={wipeDirection}
+        onCovered={handleWipeCovered}
+        onComplete={handleWipeComplete}
+      />
+
+      {/* Fixed Header with 01-07 indicators */}
       <PresentationHeader
         activeSectionIndex={activeSectionIndex}
-        onNavigateToSection={scrollToSection}
+        onNavigateToSection={navigateToSlide}
         isFullscreen={isFullscreen}
         onToggleFullscreen={toggleFullscreen}
       />
 
-      {/* Presentation 5 Streamlined Narrative Slides */}
+      {/* Presentation Streamlined Narrative Slides */}
       <main className="w-full">
         <SectionOpening onNext={handleNext} />
         <SectionScale />
