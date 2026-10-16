@@ -99,7 +99,10 @@ export default function SectionOpening({ onNext }: SectionOpeningProps) {
         {/* Contextual Action Button */}
         <div>
           <button
-            onClick={onNext}
+            onClick={(e) => {
+              e.currentTarget.blur();
+              onNext();
+            }}
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F15A24] hover:bg-[#E52B2B] text-white font-head text-xs font-extrabold tracking-wider uppercase transition-all shadow-lg shadow-[#F15A24]/30 active:scale-95 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             aria-label="Advance to Section 02: Our Reach"
           >

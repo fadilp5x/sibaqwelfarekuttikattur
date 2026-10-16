@@ -35,6 +35,15 @@ export default function WelfarePresentation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const lastNavTimeRef = useRef<number>(0);
 
+  // Disable smooth scrolling on HTML root during presentation so wipes are instant underneath
+  useEffect(() => {
+    const prevScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    return () => {
+      document.documentElement.style.scrollBehavior = prevScrollBehavior;
+    };
+  }, []);
+
   // Update document title for presentation
   useEffect(() => {
     const originalTitle = document.title;
@@ -88,6 +97,9 @@ export default function WelfarePresentation() {
             );
             if (index !== -1) {
               setActiveSectionIndex(index);
+              const section = PRESENTATION_SECTIONS[index];
+              const targetHash = section.id === 'opening' ? '' : `#${section.id}`;
+              window.history.replaceState(null, '', window.location.pathname + targetHash);
             }
           }
         });
@@ -123,6 +135,11 @@ export default function WelfarePresentation() {
     if (targetIndex < 0 || targetIndex >= PRESENTATION_SECTIONS.length) return;
     if (targetIndex === activeSectionIndex) return;
 
+    // Blur any active element so Spacebar doesn't trigger focused button clicks
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
     const direction: WipeDirection = targetIndex > activeSectionIndex ? 'forward' : 'backward';
     const targetSection = PRESENTATION_SECTIONS[targetIndex];
     const targetColor = SECTION_COLORS[targetSection.id] || '#F15A24';
@@ -144,6 +161,15 @@ export default function WelfarePresentation() {
         element.scrollIntoView({ behavior: 'instant', block: 'start' });
       }
       setActiveSectionIndex(targetIdx);
+
+      // Keep browser URL in sync without triggering sudden reload or jump
+      const targetHash = section.id === 'opening' ? '' : `#${section.id}`;
+      window.history.replaceState(null, '', window.location.pathname + targetHash);
+
+      // Ensure focus is cleared from any buttons
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
     }
   }, []);
 
@@ -216,8 +242,14 @@ export default function WelfarePresentation() {
       ].includes(e.key);
 
       if (isNavKey) {
+        // Blur any focused element (like header buttons or dock links) so spacebar exclusively navigates slides!
+        if (document.activeElement instanceof HTMLElement && document.activeElement !== document.body) {
+          document.activeElement.blur();
+        }
+
         if (now - lastNavTimeRef.current < 400) {
           e.preventDefault();
+          e.stopPropagation();
           return;
         }
         lastNavTimeRef.current = now;
@@ -228,6 +260,7 @@ export default function WelfarePresentation() {
         case 'ArrowRight':
         case 'PageDown':
           e.preventDefault();
+          e.stopPropagation();
           handleNext();
           break;
 
@@ -235,12 +268,14 @@ export default function WelfarePresentation() {
         case 'ArrowLeft':
         case 'PageUp':
           e.preventDefault();
+          e.stopPropagation();
           handlePrev();
           break;
 
         case ' ':
           // Space bar advances next (unless Shift is pressed)
           e.preventDefault();
+          e.stopPropagation();
           if (e.shiftKey) {
             handlePrev();
           } else {

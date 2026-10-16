@@ -21,6 +21,7 @@ export default function PresentationHeader({
         <div className="flex items-center gap-3">
           <Link
             to="/"
+            onClick={(e) => (e.currentTarget as HTMLElement).blur()}
             className="flex items-center gap-1.5 text-[#191919]/60 hover:text-[#F15A24] text-xs font-bold transition-colors py-1 px-2 rounded-lg hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
             title="Return to Main SIBAQ Website"
             aria-label="Return to Main SIBAQ Website"
@@ -31,6 +32,7 @@ export default function PresentationHeader({
 
           <Link
             to="/"
+            onClick={(e) => (e.currentTarget as HTMLElement).blur()}
             className="group flex items-center gap-2.5 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] rounded-lg"
             title="SIBAQ Kuttikkattur 2K26"
           >
@@ -59,7 +61,10 @@ export default function PresentationHeader({
             return (
               <button
                 key={section.id}
-                onClick={() => onNavigateToSection(idx)}
+                onClick={(e) => {
+                  (e.currentTarget as HTMLElement).blur();
+                  onNavigateToSection(idx);
+                }}
                 className={`relative min-w-[28px] sm:min-w-[34px] py-1 px-2 sm:py-1.5 sm:px-2.5 rounded-full font-head text-[10px] sm:text-xs font-extrabold tracking-wider transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] flex-shrink-0 ${
                   isActive
                     ? 'bg-[#F15A24] text-white shadow-sm shadow-[#F15A24]/30 scale-105'

@@ -123,7 +123,10 @@ export default function PresentationDock({
       <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
         {/* Previous Button */}
         <button
-          onClick={onPrev}
+          onClick={(e) => {
+            (e.currentTarget as HTMLElement).blur();
+            onPrev();
+          }}
           disabled={isFirst}
           className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFF8E8] border border-[#E7D6C2] flex items-center justify-center text-[#191919] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 active:scale-95 transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
           title="Previous Slide (← / ↑)"
@@ -136,7 +139,10 @@ export default function PresentationDock({
 
         {/* Next Button */}
         <button
-          onClick={onNext}
+          onClick={(e) => {
+            (e.currentTarget as HTMLElement).blur();
+            onNext();
+          }}
           disabled={isLast}
           className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] ${
             isLast

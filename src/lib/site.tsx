@@ -6,7 +6,13 @@ const SiteContext = createContext<SiteSettings | null>(null);
 export function SiteProvider({ children }: { children: ReactNode }) {
   const [site, setSite] = useState<SiteSettings | null>(null);
   useEffect(() => {
-    api.site().then(setSite).catch(() => setSite(null));
+    api.site().then((data) => {
+      if (data && data.site) {
+        setSite(data);
+      } else {
+        setSite(null);
+      }
+    }).catch(() => setSite(null));
   }, []);
   return <SiteContext.Provider value={site}>{children}</SiteContext.Provider>;
 }
