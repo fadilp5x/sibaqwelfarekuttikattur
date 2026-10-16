@@ -8,7 +8,7 @@ import SectionCulture from '../components/welfare/SectionCulture';
 import SectionVenue from '../components/welfare/SectionVenue';
 import SectionStageArrangements from '../components/welfare/SectionStageArrangements';
 import SectionFoodArrangements from '../components/welfare/SectionFoodArrangements';
-import SectionNeeds from '../components/welfare/SectionNeeds';
+import SectionAccommodation from '../components/welfare/SectionAccommodation';
 import ColorWipeOverlay, { WipeDirection } from '../components/welfare/ColorWipeOverlay';
 
 const SECTION_COLORS: Record<string, string> = {
@@ -303,6 +303,7 @@ export default function WelfarePresentation() {
         <SectionVenue />
         <SectionStageArrangements />
         <SectionFoodArrangements />
+        <SectionAccommodation />
       </main>
 
       {/* Floating Compact Presentation Control Bar */}

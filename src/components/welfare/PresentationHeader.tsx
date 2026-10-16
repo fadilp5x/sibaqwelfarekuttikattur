@@ -52,15 +52,15 @@ export default function PresentationHeader({
           </Link>
         </div>
 
-        {/* Section Navigation Tabs (01 - 05) */}
-        <nav aria-label="Presentation Sections" className="flex items-center gap-1 sm:gap-2 md:gap-3">
+        {/* Section Navigation Tabs (01 - 07) */}
+        <nav aria-label="Presentation Sections" className="flex items-center gap-1 sm:gap-1.5 md:gap-2 overflow-x-auto no-scrollbar py-1">
           {PRESENTATION_SECTIONS.map((section, idx) => {
             const isActive = idx === activeSectionIndex;
             return (
               <button
                 key={section.id}
                 onClick={() => onNavigateToSection(idx)}
-                className={`relative min-w-[32px] sm:min-w-[36px] py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-full font-head text-[11px] sm:text-xs md:text-sm font-extrabold tracking-wider transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] ${
+                className={`relative min-w-[28px] sm:min-w-[34px] py-1 px-2 sm:py-1.5 sm:px-2.5 rounded-full font-head text-[10px] sm:text-xs font-extrabold tracking-wider transition-all touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] flex-shrink-0 ${
                   isActive
                     ? 'bg-[#F15A24] text-white shadow-sm shadow-[#F15A24]/30 scale-105'
                     : 'text-[#191919]/65 hover:text-[#191919] hover:bg-black/5'
@@ -69,7 +69,7 @@ export default function PresentationHeader({
                 title={`Jump to Section ${section.number}: ${section.title}`}
               >
                 <span>{section.number}</span>
-                <span className="hidden lg:inline ml-1.5 text-[11px] font-bold opacity-90">
+                <span className="hidden xl:inline ml-1 text-[10px] font-bold opacity-90">
                   {section.shortLabel}
                 </span>
               </button>
@@ -78,11 +78,24 @@ export default function PresentationHeader({
         </nav>
 
         {/* Right Label & Mode Controls */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E7D6C2] shadow-sm">
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+          {/* Compact Combined Budget Requirement Context */}
+          <div
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFF2EB] border border-[#F15A24]/40 shadow-xs"
+            title="Estimated Combined Welfare Requirement across Stages, Food, and Accommodation"
+          >
+            <span className="font-head text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#D84315]">
+              COMBINED EST:
+            </span>
+            <span className="font-display text-xs sm:text-sm font-black text-[#F15A24]">
+              ₹10,00,000
+            </span>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E7D6C2] shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#33AC5A] animate-pulse" />
-            <span className="font-head text-[10px] tracking-[0.16em] font-extrabold text-[#191919]/80 uppercase">
-              WELFARE COMMITTEE BRIEFING
+            <span className="font-head text-[9px] sm:text-[10px] tracking-[0.16em] font-extrabold text-[#191919]/80 uppercase">
+              WELFARE COMMITTEE
             </span>
           </div>
 
