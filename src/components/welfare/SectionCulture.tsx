@@ -6,19 +6,19 @@ export default function SectionCulture() {
   return (
     <section
       id="culture"
-      className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#FFF8E8] text-[#191919] pt-20 pb-28 px-4 sm:px-8 lg:px-12 snap-start"
+      className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#FFC928] text-[#191919] pt-20 pb-28 px-4 sm:px-8 lg:px-12 snap-start scroll-mt-16 sm:scroll-mt-18"
       aria-label="Section 03: Cultural Programmes"
     >
       <div className="relative z-10 w-full max-w-[1360px] mx-auto flex flex-col justify-center">
         {/* Concise Section Header */}
         <div className="mb-6 lg:mb-8 text-center sm:text-left max-w-3xl">
-          <span className="font-head text-xs font-black tracking-[0.22em] text-[#F15A24] uppercase block mb-2">
+          <span className="font-head text-xs font-black tracking-[0.22em] text-[#191919]/80 uppercase block mb-2">
             03 / FEATURED PROGRAMMES
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight text-[#191919] uppercase leading-[1.05] font-black mb-2">
-            A CELEBRATION OF <span className="text-[#F15A24]">FAITH</span> &amp; <span className="text-[#33AC5A]">EXPRESSION</span>
+            A CELEBRATION OF <span className="text-[#D84315]">FAITH</span> &amp; <span className="text-[#15803D]">EXPRESSION</span>
           </h2>
-          <p className="font-body text-xs sm:text-sm md:text-base text-[#191919]/75 max-w-xl leading-relaxed">
+          <p className="font-body text-xs sm:text-sm md:text-base text-[#191919]/85 max-w-xl leading-relaxed">
             Spotlighting iconic festival competitions across sacred recitation, vocal harmony, and creative arts.
           </p>
         </div>
@@ -28,11 +28,7 @@ export default function SectionCulture() {
           {programmes.map((item) => (
             <div
               key={item.number}
-              className="group bg-white rounded-3xl p-4 border-2 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
-              style={{
-                borderColor: item.accentColor,
-                boxShadow: `0 4px 18px -2px ${item.accentColor}25, 0 2px 6px -1px rgba(0,0,0,0.04)`,
-              }}
+              className="group bg-white rounded-3xl p-4 border-2 border-black/5 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
             >
               {/* Photo View with Authentic Image */}
               <div className="relative aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-stone-100 mb-3.5">
@@ -65,13 +61,13 @@ export default function SectionCulture() {
                 </div>
               </div>
 
-              {/* Short Programme Title (No lengthy descriptions) */}
+              {/* Short Programme Title */}
               <div className="px-1 py-1 flex items-center justify-between">
                 <h3 className="font-head text-sm sm:text-base font-black tracking-wider uppercase text-[#191919] leading-tight">
                   {item.title}
                 </h3>
                 <span
-                  className="w-2 h-2 rounded-full flex-shrink-0"
+                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                   style={{ backgroundColor: item.accentColor }}
                 />
               </div>

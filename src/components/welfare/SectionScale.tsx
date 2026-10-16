@@ -7,19 +7,19 @@ export default function SectionScale() {
   return (
     <section
       id="scale"
-      className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#FFF8E8] text-[#191919] pt-20 pb-28 px-4 sm:px-8 lg:px-12 snap-start"
+      className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#E52B2B] text-white pt-20 pb-28 px-4 sm:px-8 lg:px-12 snap-start scroll-mt-16 sm:scroll-mt-18"
       aria-label="Section 02: The Scale of SIBAQ"
     >
       <div className="relative z-10 w-full max-w-[1360px] mx-auto flex flex-col justify-center">
         {/* Balanced Section Header */}
         <div className="mb-6 lg:mb-8 text-center sm:text-left max-w-3xl">
-          <span className="font-head text-xs font-black tracking-[0.22em] text-[#F15A24] uppercase block mb-2">
+          <span className="font-head text-xs font-black tracking-[0.22em] text-[#FFC928] uppercase block mb-2">
             02 / OUR REACH
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight text-[#191919] uppercase leading-[1.05] font-black mb-2">
-            A FESTIVAL THAT <span className="text-[#33AC5A]">UNITES THOUSANDS</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight uppercase leading-[1.05] font-black mb-2 text-white drop-shadow-sm">
+            A FESTIVAL THAT <span className="text-[#FFC928]">UNITES THOUSANDS</span>
           </h2>
-          <p className="font-body text-xs sm:text-sm md:text-base text-[#191919]/75 max-w-xl leading-relaxed">
+          <p className="font-body text-xs sm:text-sm md:text-base text-white/90 max-w-xl leading-relaxed">
             The Darul Huda institutional network uniting students, candidates and campuses across India.
           </p>
         </div>
@@ -29,11 +29,7 @@ export default function SectionScale() {
           {stats.map((stat) => (
             <div
               key={stat.id}
-              className="group bg-white rounded-3xl p-4 sm:p-5 border-2 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
-              style={{
-                borderColor: stat.borderColor,
-                boxShadow: `0 4px 18px -2px ${stat.shadowColor}25, 0 2px 6px -1px rgba(0,0,0,0.04)`,
-              }}
+              className="group bg-white rounded-3xl p-4 sm:p-5 border-2 border-white/30 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
             >
               {/* 1. Deliberate Photograph Crop */}
               <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-stone-100 mb-4">

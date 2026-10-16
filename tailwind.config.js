@@ -19,9 +19,10 @@ export default {
         rose: '#ff7a59',
       },
       fontFamily: {
-        display: ['Anton', 'Archivo', 'sans-serif'],
-        head: ['Archivo', 'sans-serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        display: ['Poppins', 'Anton', 'Archivo', 'sans-serif'],
+        head: ['Poppins', 'Archivo', 'sans-serif'],
+        body: ['Inter', '"Plus Jakarta Sans"', 'sans-serif'],
+        malayalam: ['"Noto Sans Malayalam"', 'sans-serif'],
       },
       keyframes: {
         marquee: {

@@ -14,11 +14,11 @@ import ColorWipeOverlay, { WipeDirection } from '../components/welfare/ColorWipe
 const SECTION_COLORS: Record<string, string> = {
   opening: '#F15A24', // Flame Orange
   scale: '#E52B2B',   // Festival Red
-  culture: '#FFC928', // Marigold Yellow
-  venue: '#33AC5A',   // Emerald Green
-  stages: '#F15A24',  // Flame Orange
-  food: '#FFC928',    // Marigold Yellow
-  accommodation: '#33AC5A', // Emerald Green
+  culture: '#FFC928', // Carnival Yellow
+  venue: '#2F5FE8',   // Vivid Blue
+  stages: '#F15A24',  // SIBAQ Orange
+  food: '#2F5FE8',    // Bright Blue
+  accommodation: '#218C4A', // Emerald Green
   needs: '#F15A24',   // Fallback
 };
 
